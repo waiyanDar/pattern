@@ -4,6 +4,7 @@ import com.example.employeeservice.dao.EmployeeDao;
 import com.example.employeeservice.dto.EmployeeDto;
 import com.example.employeeservice.dto.Employees;
 import com.example.employeeservice.entity.Employee;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +21,7 @@ public class EmployeeController {
         this.employeeDao = employeeDao;
     }
 
+    @GetMapping("/employees")
     public Employees listAllEmployee(){
         List<EmployeeDto> employeeDtoList =employeeDao.findAll().stream()
                 .map(this::toDto)

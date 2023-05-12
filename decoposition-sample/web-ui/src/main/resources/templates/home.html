@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/masterLayout :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+  <div class="container my-5">
+    <a th:href="@{/webui/addresses}" class="btn btn-info my-3">Addresses</a>
+    <a th:href="@{/webui/employees}" class="btn btn-info ml-3">Employees</a>
+    <div th:if="${hasAddresses}">
+    <table  class="table table-striped">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Street Name</th>
+        <th>Street Number</th>
+        <th>City</th>
+        <th>Zip Code</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="add : ${addresses}">
+        <td th:text="${add.id}"></td>
+        <td th:text="${add.streetName}"></td>
+        <td th:text="${add.streetNumber}"></td>
+        <td th:text="${add.city}"></td>
+        <td th:text="${add.zipCode}"></td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+    <div th:if="${hasEmployees}">
+      <table  class="table table-striped">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>CubicleNo</th>
+          <th>Salary</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="em : ${employees}">
+          <td th:text="${em.id}"></td>
+          <td th:text="${em.firstName}"></td>
+          <td th:text="${em.lastName}"></td>
+          <td th:text="${em.cubicleNo}"></td>
+          <td th:text="${em.salary}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+</body>
+</html>
+
+
+
+
+
+
