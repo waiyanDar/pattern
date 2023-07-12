@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html th:replace="~{Layout/masterLayout :: layout(~{main})}" xmlns:th="http://www.thymeleaf.org">
+<body>
+<main role="main">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12">
+                <form th:action="@{/department-form}" method="post" th:object="${department}">
+                    <div class="form-group">
+                        <label for="firstName">DepartmentName</label>
+                        <input type="text" id="firstName" th:field="*{departmentName}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cubicle">CubicleNo</label>
+                        <input type="text" id="cubicle" th:field="*{cubicleNo}" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phoneNo">PhoneNo</label>
+                        <input type="text" id="phoneNo" th:field="*{phoneNo}" class="form-control">
+                    </div>
+                    <div>
+                    <a th:href="@{/employee-form}" class="btn btn-primary">previous</a>
+                    <input class="btn btn-info" type="submit" value="next">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

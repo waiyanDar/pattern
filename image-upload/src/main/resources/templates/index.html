@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gf shi lr</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css"
+          th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12" th:if="${imageNames.isEmpty()}">
+            <div class="alert alert-info" role="alert">
+                No Image Defined Yet!
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" th:each="img : ${imageNames}">
+           <div class="card mb-4">
+               <div class="card-body">
+                   <p class="card-text">
+                       <img style="max-width: 400px; max-height: 200px;" th:src="@{'/image/'+${img}}" th:alt="${img}">
+                   </p>
+               </div>
+           </div>
+        </div>
+    </div>
+    <hr class="my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <form enctype="multipart/form-data" th:action="@{/image/upload}" method="post">
+                <div class="form-group">
+                    <label for="img">Upload Image</label>
+                    <input type="file" name="file" id="img" class="form-control-file">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Upload">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
